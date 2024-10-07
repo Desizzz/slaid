@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #000;
+    z-index: 1;
+}
+
+#slaid {
+    width: 480px;
+    height: 270px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 200px;
+    top: 200px;
+    border: 1px solid #888;
+    position: relative;
+}
+
+img {
+    position: absolute;
+    /* display: none; */
+    z-index: -1;
+    width: 480px;
+    height: 270px;
+}
+
+.black {
+    width: 480px;
+    height: 270px;
+    background: #000;
+    position: absolute;
+    left:481px
+}
+.black2 {
+    width: 480px;
+    height: 270px;
+    background: #000;
+    position: absolute;
+    left: -481px;
+}
+
+#left {
+    background: #888;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: 310px;
+    left: 120px;
+    z-index: 10;
+}
+
+#right {
+    background: #888;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    position: absolute;
+    top: 310px;
+    left: 720px;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #fff;
+    /* position: absolute;
+    left: 200px;
+    top: 300px */
+}
+
+.circle2 {
+    background-color: red;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+#for-circle {
+    padding-left: 230px;
+    display: flex;
+    column-gap: 10px;
+    position: absolute;
+    top: 500px;
+}

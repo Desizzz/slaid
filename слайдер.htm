@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="left"></div>
+    <div id="slaid">
+        <div class="black"></div>
+        <img id="img" src="" alt="">
+        <div class="black2"></div>
+    </div>
+    <div id="for-circle"></div>
+    <div id="right"></div>
+
+    <script>
+        let mass = ['./image/i.webp', './image/i (1).webp', './image/i (2).webp', './image/i (3).webp', './image/i (4).webp', './image/i (5).webp']
+        const for_circle = document.getElementById('for-circle')
+        for (let i = 0; i < mass.length; i++) {
+            const block = document.createElement('div')
+            block.classList.add('circle')
+            block.setAttribute('id', `circle${i}`)
+            document.getElementById('for-circle').append(block)
+        }
+        const left = document.getElementById('left')
+        const div = document.getElementById('slaid')
+        const right = document.getElementById('right')
+        const img = document.getElementById('img')
+        let circle = document.querySelectorAll('.circle')
+        let i = 0;
+        left.addEventListener('click', () => { 
+            circle0.addEventListener('click', () => {i = btnCircle(0) })
+            circle1.addEventListener('click', () => {i = btnCircle(1) })
+            circle2.addEventListener('click', () => {i = btnCircle(2) })
+            circle3.addEventListener('click', () => {i = btnCircle(3) })
+            circle4.addEventListener('click', () => {i = btnCircle(4) })
+            circle5.addEventListener('click', () => {i = btnCircle(5) })
+            if(i == 0) {
+                i = mass.length - 1;
+            } else i--;
+
+            
+            circle.forEach(() => { circle[i].classList.add('circle2')})
+            for (let j = 0; j <= mass.length - 1; j++) {
+                if (j == i) continue
+                circle[j].classList.remove('circle2')
+            }
+            document.getElementsByTagName("img")[0].remove()
+            let img = document.createElement('img')
+            img.style.left = '-480px'
+            let leftPosition = parseInt(img.style.left.replace('px', ''))
+            img.src = mass[i]
+            div.append(img)
+            img.style.display = 'block'
+            right.classList.add('disabled')
+            left.classList.add('disabled')
+
+            const intervalId = setInterval(() => {
+                leftPosition += 30;
+                img.style.left = leftPosition + 'px';
+
+                if (leftPosition == 0) {
+                    clearInterval(intervalId); // Останавливаем интервал
+                    right.classList.remove('disabled')
+                    left.classList.remove('disabled')
+                }
+            }, 50); 
+
+            left.addEventListener('click', () => {
+                img.style.left = '0px'
+                let leftPosition = parseInt(img.style.left.replace('px', ''))
+                if(i==5) {
+                    img.src = mass[0]
+                } else img.src = mass[i + 1];
+                div.append(img)
+                img.style.display = 'block'
+
+                const intervalId = setInterval(() => {
+                    leftPosition += 30;
+                    img.style.left = leftPosition + 'px';
+
+                    if (leftPosition == 480) {
+                        clearInterval(intervalId); // Останавливаем интервал
+                    }
+                }, 50);
+                
+            })
+        });
+        
+        right.addEventListener('click', () => {
+            if (i == mass.length - 1) {
+                i = 0
+            } else i++;
+            circle0.addEventListener('click', () => {i = btnCircle(0) })
+            circle1.addEventListener('click', () => {i = btnCircle(1) })
+            circle2.addEventListener('click', () => {i = btnCircle(2) })
+            circle3.addEventListener('click', () => {i = btnCircle(3) })
+            circle4.addEventListener('click', () => {i = btnCircle(4) })
+            circle5.addEventListener('click', () => {i = btnCircle(5) })
+
+            circle.forEach(() => {circle[i].classList.add('circle2') })
+            for (let j = 0; j <= mass.length - 1; j++) {
+                if (j == i) continue
+                circle[j].classList.remove('circle2')
+            }
+            
+            document.getElementsByTagName("img")[0].remove()
+            img.style.left = '480px'
+            let leftPosition = parseInt(img.style.left.replace('px', ''))
+            img.src = mass[i]
+            div.append(img)
+            img.style.display = 'block'
+            right.classList.add('disabled')
+            left.classList.add('disabled')
+            
+            const intervalId = setInterval(() => {
+                leftPosition -= 30;
+                img.style.left = leftPosition + 'px';
+
+                if (leftPosition == 0) {
+                    clearInterval(intervalId); // Останавливаем интервал
+                    right.classList.remove('disabled')
+                    left.classList.remove('disabled')
+                }
+            }, 50);
+
+            right.addEventListener('click', () => {
+                let img = document.createElement('img')
+                img.style.left = '0px'
+                let leftPosition = parseInt(img.style.left.replace('px', ''))
+                if(i==0){
+                    img.src = mass[5]
+                } else img.src = mass[i-1]
+                div.append(img)
+                img.style.display = 'block'
+
+                const intervalId = setInterval(() => {
+                    leftPosition -= 30;
+                    img.style.left = leftPosition + 'px';
+
+                if (leftPosition == 0) {
+                        clearInterval(intervalId); // Останавливаем интервал
+                    }
+                }, 50);
+            })
+            
+        });  
+
+        function btnCircle(int) {
+            let i = int
+            let img = document.createElement('img')
+            img.src = mass[int] 
+            circle.forEach(() => { console.log(i); circle[int].classList.add('circle2') })
+            for (let j = 0; j <= mass.length - 1; j++) {
+                if (j == int) continue
+                circle[j].classList.remove('circle2')
+            }
+            div.append(img)
+            img.style.display = 'block'
+            return i
+        }
+        
+    </script>
+</body>
+</html>
